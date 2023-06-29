@@ -1,10 +1,9 @@
-package com.phonebook;
+package com.phonebook.fw;
 
-import com.phonebook.BaseHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePageHelper extends BaseHelper {
+public class HomePageHelper extends BaseHelper{
 
     public HomePageHelper(WebDriver driver) {
         super(driver);

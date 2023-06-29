@@ -1,10 +1,15 @@
 package com.phonebook.fw;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
+public class HeaderHelper extends BaseHelper{
 
-public class HederHelper extends BaseHelper{
+    public HeaderHelper(WebDriver driver) {
+        super(driver);
+    }
 
-    public void clickOnLoginLink () {
+    public void clickOnLoginLink() {
         click(By.xpath("//a[.='LOGIN']"));
     }
 
@@ -33,7 +38,6 @@ public class HederHelper extends BaseHelper{
     }
 
     public boolean isAboutLinkPresent() {
-        return isElementPresent(By.xpath("//a[]contains(.,'ABOUT)"));
+        return isElementPresent(By.xpath("//a[contains(.,'ABOUT')]"));
     }
-
 }

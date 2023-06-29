@@ -1,14 +1,13 @@
-package com.phonebook;
+package com.phonebook.fw;
 
-import com.phonebook.BaseHelper;
-import com.phonebook.tests.Contact;
+import com.phonebook.model.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ContactHelper extends BaseHelper {
+public class ContactHelper extends BaseHelper{
 
     public ContactHelper(WebDriver driver) {
         super(driver);
@@ -45,5 +44,35 @@ public class ContactHelper extends BaseHelper {
 
     public boolean isContactListEmpty() {
         return driver.findElements(By.cssSelector(".contact-item_card__2SOIM")).isEmpty();
+    }
+
+    public void addContact() {
+        fillAddContactForm(new Contact()
+                .setName("Karl")
+                .setLastname("Adam")
+                .setPhone("1234567890")
+                .setEmail("adam@gm.com")
+                .setAddress("Koblenz")
+                .setDesc("goalkeeper"));
+        clickOnSaveButton();
+    }
+
+    public  void removeContact1(String text) {
+        List<WebElement> contacts = driver.findElements(By.cssSelector("h2"));
+        for (WebElement element: contacts) {
+            if (element.getText().contains(text)) {
+                element.click();
+                click(By.xpath("//button[.='Remove']"));
+            }
+        }
+    }
+
+    public int sizeOfContacts() {
+
+        if (isElementPresent(By.cssSelector(".contact-item_card__2SOIM"))) {
+            return driver.findElements(By.cssSelector(".contact-item_card__2SOIM")).size();
+        }
+
+        return 0;
     }
 }

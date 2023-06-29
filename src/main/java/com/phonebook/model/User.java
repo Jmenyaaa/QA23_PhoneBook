@@ -1,4 +1,4 @@
-package com.phonebook.fw;
+package com.phonebook.model;
 
 public class User {
 

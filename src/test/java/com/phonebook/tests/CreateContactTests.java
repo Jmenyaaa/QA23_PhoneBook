@@ -1,6 +1,7 @@
-package com.tests.tests;
+package com.phonebook.tests;
+
+import com.phonebook.fw.DataProviders;
 import com.phonebook.model.Contact;
-import com.phonebook.fw.DataProviedrs;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,8 +15,7 @@ public class CreateContactTests extends TestBase {
             app.getHeader().clickOnSignOutButton();
         }
         app.getHeader().clickOnLoginLink();
-        app.getUser().fillLoginRegistrationForm(new User().setEmail("kan@gmai.com").setPassword("Kan123$-_$"));
-        app.getUser().clickOnLoginButton();
+        app.getUser().login();
     }
 
     @Test
@@ -37,15 +37,15 @@ public class CreateContactTests extends TestBase {
         Assert.assertTrue(app.getContact().isContactCreated("Karl"));
         //  Assert.assertTrue(app.isPhoneNumberAdded(""));
     }
-    @Test(dataProviderClass = DataProviedrs.class,dataProvider = "addContactFromCsvFile")
+
+    @Test(dataProviderClass = DataProviders.class,dataProvider = "addContactFromCsvFile")
     public void addContactFromCsvFilePositiveTest(Contact contact) {
-        //click on the ADD link
+
         app.getHeader().clickOnAddLink();
-        // int i = (int) (System.currentTimeMillis() / 1000)%3600;
-        //fill in the add contact form
         app.getContact().fillAddContactForm(contact);
 
         app.getContact().clickOnSaveButton();
+
     }
 
     @AfterMethod

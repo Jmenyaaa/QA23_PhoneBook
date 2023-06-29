@@ -1,4 +1,4 @@
-package com.phonebook;
+package com.phonebook.fw;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,11 +11,11 @@ import java.time.Duration;
 public class ApplicationManager {
 
     String browser;
-    WebDriver driver;
+    public WebDriver driver;
 
     UserHelper user;
     ContactHelper contact;
-   // HeaderHelper header;
+    HeaderHelper header;
     HomePageHelper homePage;
 
     public ApplicationManager(String browser) {
@@ -30,15 +30,17 @@ public class ApplicationManager {
         return contact;
     }
 
-   // public HeaderHelper getHeader() {
-   //     return header;
-   // }
+    public HeaderHelper getHeader() {
+        return header;
+    }
 
     public HomePageHelper getHomePage() {
         return homePage;
     }
 
     public void init() {
+        System.err.close();
+
         if (browser.equalsIgnoreCase("chrome")) {
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
@@ -55,7 +57,7 @@ public class ApplicationManager {
 
         user = new UserHelper(driver);
         contact = new ContactHelper(driver);
-      //  header = new HeaderHelper(driver);
+        header = new HeaderHelper(driver);
         homePage = new HomePageHelper(driver);
     }
 

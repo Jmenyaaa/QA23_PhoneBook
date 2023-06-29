@@ -1,0 +1,8 @@
+6895 [Test worker] INFO  com.phonebook.tests.TestBase -- Start test loginPositiveTest with data: []
+8370 [Test worker] INFO  com.phonebook.tests.TestBase -- PASSED: loginPositiveTest
+8373 [Test worker] INFO  com.phonebook.tests.TestBase -- Stop test
+8373 [Test worker] INFO  com.phonebook.tests.TestBase -- ==================================================
+8383 [Test worker] INFO  com.phonebook.tests.TestBase -- Start test loginNegativeWithoutPasswordTest with data: []
+19888 [Test worker] INFO  com.phonebook.tests.TestBase -- PASSED: loginNegativeWithoutPasswordTest
+19889 [Test worker] INFO  com.phonebook.tests.TestBase -- Stop test
+19890 [Test worker] INFO  com.phonebook.tests.TestBase -- ==================================================

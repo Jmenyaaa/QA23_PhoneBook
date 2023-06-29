@@ -1,4 +1,4 @@
-package com.phonebook.fw;
+package com.phonebook.model;
 
 public class Contact {
 
@@ -59,11 +59,10 @@ public class Contact {
         return address;
     }
 
-
-
     public String getDesc() {
         return desc;
     }
+
     @Override
     public String toString() {
         return "Contact{" +

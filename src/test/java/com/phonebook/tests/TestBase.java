@@ -1,4 +1,4 @@
-package com.tests.tests;
+package com.phonebook.tests;
 
 import com.phonebook.fw.ApplicationManager;
 import org.openqa.selenium.remote.Browser;
@@ -24,24 +24,37 @@ public class TestBase {
     }
 
     //  @AfterMethod(enabled = false)
-    @AfterSuite(enabled = false)
+    @AfterSuite(enabled = true)
     public void tearDown() {
         app.stop();
     }
 
     @BeforeMethod
-    public void startTest(Method m,Object[] p) {
-        logger.info("Start test " + m.getName() + "with data: " + Arrays.asList(p));
+    public void startTest(Method m, Object[] p) {
+        logger.info("Start test " + m.getName() + " with data: " + Arrays.asList(p));
     }
 
     @AfterMethod
     public void stopTest(ITestResult result) {
         if (result.isSuccess()) {
-            logger.info("PASSED: "+ result.getMethod().getMethodName());
-        } else {
-            logger.error("FAILED: " + result.getMethod().getMethodName());
+            logger.info("PASSED: " + result.getMethod().getMethodName());
+        } else  {
+            logger.error("FAILED: " + result.getMethod().getMethodName() + " Screenshot: "
+                    + app.getUser().takeScreenshot());
         }
-        logger.info("================================");
+        logger.info("Stop test");
+        logger.info("==================================================");
     }
 
 }
+
+//@BeforeTest
+//@BeforeMethod
+//@BeforeClass
+//@BeforeSuite
+//@BeforeGroups
+//@AfterGroups
+//@AfterSuite
+//@AfterClass
+//@AfterMethod
+//@AfterTest
