@@ -1,29 +1,37 @@
-package com.phonebook.tests;
+package com.tests.tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class HeaderTests extends TestBase{
+public class HeaderTests extends TestBase {
+
+    @BeforeMethod
+    public void ensurePrecondition() {
+        if (!app.isLoginLinkPresent()) {
+            app.clickOnSignOutButton();
+        }
+    }
 
     @Test
-    public void openPhoneBookTest() {
+    public void verifyIsLogoPresent() {
+        Assert.assertTrue(app.isLogoPresent());
+    }
 
-        // System.out.println("Home Component is " + isHomeComponentPresent1());
-        //   isElementPresent(By.xpath("//h1[text()='Home Component']"));
+    @Test
+    public void verifyIsHomeLinkPresent() {
+        Assert.assertTrue(app.isHomeLinkPresent());
+    }
 
-        Assert.assertTrue( isElementPresent1(By.xpath("//h1[text()='PHONEBOOK']")));
-    }
     @Test
-    public void openHomePageTest(){
-        Assert.assertTrue( isElementPresent1(By.xpath("//a[.='HOME']")));
+    public void verifyIsAboutLinkPresent() {
+        Assert.assertTrue(app.isAboutLinkPresent());
     }
+
     @Test
-    public void openAboutPageTest(){
-        Assert.assertTrue( isElementPresent1(By.xpath("//a[.='ABOUT']")));
+    public void verifyIsLoginLinkPresent() {
+        Assert.assertTrue(app.isLoginLinkPresent());
     }
-    @Test
-    public void openLoginPageTest(){
-        Assert.assertTrue( isElementPresent1(By.xpath("//a[.='LOGIN']")));
-    }
+
+
 }
